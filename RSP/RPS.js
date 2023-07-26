@@ -30,7 +30,7 @@ function getComputerChoice(){
 
 
 
-function playRound(playerSelection = prompt("Rock, paper or scissors?", ""), computerSelection = getComputerChoice()){
+function playRound(playerSelection = prompt("Rock, paper or scissors?"), computerSelection = getComputerChoice()){
     
     let localPlayerSelection = playerSelection.toLowerCase(); // this is to make game case-insensitive
     
