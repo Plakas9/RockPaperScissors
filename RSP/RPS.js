@@ -1,47 +1,3 @@
-/*1. Create a function that randomly gets a choice from the computer ( getComputerChoice())
-  
- */
-
-
-
-// 2. create a function that takes two parameters and plays one round of rock paper scissors.
-// - first as input from computer
-// - second as input from player
-// - this function must declare a winner from that round, i.e. return a string declaring winner
-
-
-/*3.
-create a game() function.
-- play 5 rounds in a game.
--keep a score
--report a winner or loser in the end
-*/
-
-/*function FirstToFive(){ // This is my own function, it is different to the assignment in that it plays at most 100 games but if someone reaches 5 points then the game is over.
-
-  let playerTracker = 0;
-  let computerTracker =0;
-  let TrackerArray = [0,0];
-  for(count = 0; count < 100; count++){
-    console.log("count is: ", count);
-    let result = playRound();
-    if((TrackerArray[0]== 5)|| (TrackerArray[1]== 5)){
-      break;
-      
-      }else if(result == "Player Wins" ){
-        TrackerArray[0] = TrackerArray[0] +1;
-      }else{
-        TrackerArray[1] = TrackerArray[1] +1;
-      }
-      console.log(TrackerArray);
-  }
-  console.log("the tracker array is: " ,TrackerArray);
-  return TrackerArray;
-}
-
-console.log(FirstToFive());
-*/ 
-
 const Rbtn = document.querySelector('#R');
 const Pbtn = document.querySelector('#P');
 const Sbtn = document.querySelector('#S');
@@ -53,49 +9,19 @@ let resultClass = document.querySelector('.resultClass');
 
 Rbtn.addEventListener ('click',function(e){
 let result = playRound("rock");
-
-if (result == 'draw') {
-  resultClass.textContent = "DRAW, You Both played rock!"; 
-}else  if (result =='Pwin' ){
-  resultClass.textContent = 'This Round was yours';
-}else{
-  resultClass.textContent = "Computer won this round, but it's not over yet";
-}
-pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
-resultClass.appendChild(pResult); 
+ScoreDisplay(result);
 
 });
-
 
 
 Pbtn.addEventListener('click',function(e){
 let result = playRound("paper");
-
-if (result == 'draw') {
-  resultClass.textContent = "DRAW, You Both played Paper!"; 
-}else  if (result =='Pwin' ){
-  resultClass.textContent = 'This Round was yours';
-}else{
-  resultClass.textContent = "Computer won this round, but it's not over yet";
-}
-resultClass.appendChild(pResult); 
-resultClass.appendChild(pResult); 
-
+ScoreDisplay(result);
 });
 
 Sbtn.addEventListener('click', function(e){
 let result = playRound("scissors");
-
-if (result == 'draw') {
-  resultClass.textContent = "DRAW, You Both played scissors!"; 
-}else  if (result =='Pwin' ){
-  resultClass.textContent = 'This Round was yours';
-}else{
-  resultClass.textContent = "Computer won this round, but it's not over yet";
-}
-resultClass.appendChild(pResult); 
-resultClass.appendChild(pResult); 
-
+ScoreDisplay(result);
 });
 
 
@@ -108,7 +34,19 @@ function getComputerChoice(){
 
 }
 
-
+function ScoreDisplay(result){ // This function will handle the output that the users see
+  
+  if (result == 'draw') {
+    resultClass.textContent = "DRAW, You Both played rock!"; 
+  }else  if (result =='Pwin' ){
+    resultClass.textContent = 'This Round was yours';
+  }else{
+    resultClass.textContent = "Computer won this round, but it's not over yet";
+  }
+  pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
+  resultClass.appendChild(pResult); 
+  
+}
 
 
 function playRound(playerSelection , computerSelection = getComputerChoice()){
@@ -131,7 +69,7 @@ function playRound(playerSelection , computerSelection = getComputerChoice()){
       return "Cwin";
     }
     
-
+    
 }
 
 
