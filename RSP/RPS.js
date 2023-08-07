@@ -45,17 +45,57 @@ console.log(FirstToFive());
 const Rbtn = document.querySelector('#R');
 const Pbtn = document.querySelector('#P');
 const Sbtn = document.querySelector('#S');
-
+let pResult = document.createElement('p');
+let playerTracker = 0;
+let computerTracker=0;
+let drawTracker = 0;
+let resultClass = document.querySelector('.resultClass');
 
 Rbtn.addEventListener ('click',function(e){
-playRound("rock");
+let result = playRound("rock");
+
+if (result == 'draw') {
+  resultClass.textContent = "DRAW, You Both played rock!"; 
+}else  if (result =='Pwin' ){
+  resultClass.textContent = 'This Round was yours';
+}else{
+  resultClass.textContent = "Computer won this round, but it's not over yet";
+}
+pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
+resultClass.appendChild(pResult); 
+
 });
 
+
+
 Pbtn.addEventListener('click',function(e){
-playRound("paper")
+let result = playRound("paper");
+
+if (result == 'draw') {
+  resultClass.textContent = "DRAW, You Both played Paper!"; 
+}else  if (result =='Pwin' ){
+  resultClass.textContent = 'This Round was yours';
+}else{
+  resultClass.textContent = "Computer won this round, but it's not over yet";
+}
+resultClass.appendChild(pResult); 
+resultClass.appendChild(pResult); 
+
 });
+
 Sbtn.addEventListener('click', function(e){
-playRound("scissors");
+let result = playRound("scissors");
+
+if (result == 'draw') {
+  resultClass.textContent = "DRAW, You Both played scissors!"; 
+}else  if (result =='Pwin' ){
+  resultClass.textContent = 'This Round was yours';
+}else{
+  resultClass.textContent = "Computer won this round, but it's not over yet";
+}
+resultClass.appendChild(pResult); 
+resultClass.appendChild(pResult); 
+
 });
 
 
@@ -65,7 +105,10 @@ function getComputerChoice(){
     const randomIndex = Math.floor(Math.random()*RSP_array.length);//here we get a random index number
     const CompChoice = RSP_array[randomIndex]; // will pick random item in array either R/S/P
     return CompChoice;
+
 }
+
+
 
 
 function playRound(playerSelection , computerSelection = getComputerChoice()){
@@ -73,15 +116,19 @@ function playRound(playerSelection , computerSelection = getComputerChoice()){
     let localPlayerSelection = playerSelection.toLowerCase(); // this is to make game case-insensitive
     
     if(localPlayerSelection == computerSelection){ 
-        return "draw";
+      drawTracker++;
+      return "draw";
+
       }else if(
         (localPlayerSelection === "rock" && computerSelection === "scissors") || // All Cases where Player beats computer
         (localPlayerSelection === "scissors" && computerSelection === "paper") ||
         (localPlayerSelection === "paper" && computerSelection === "rock")
       ){
-        return "Player Wins";
+        playerTracker++;
+        return "Pwin";
     }else { // in any other case computer will win except if unknown string is entered. 
-        return "Computer Wins"
+      computerTracker++;  
+      return "Cwin";
     }
     
 
