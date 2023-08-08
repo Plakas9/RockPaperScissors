@@ -8,8 +8,10 @@ let drawTracker = 0;
 let resultClass = document.querySelector('.resultClass');
 
 Rbtn.addEventListener ('click',function(e){
+
 let result = playRound("rock");
 ScoreDisplay(result);
+game(computerTracker,playerTracker);
 
 });
 
@@ -17,18 +19,19 @@ ScoreDisplay(result);
 Pbtn.addEventListener('click',function(e){
 let result = playRound("paper");
 ScoreDisplay(result);
+game(computerTracker,playerTracker);
 });
 
 Sbtn.addEventListener('click', function(e){
 let result = playRound("scissors");
 ScoreDisplay(result);
+game(computerTracker,playerTracker);
 });
 
 
 function getComputerChoice(){  
-    const RSP_array = ["rock","paper","scissors"]; //  
-    // get random index value:
-    const randomIndex = Math.floor(Math.random()*RSP_array.length);//here we get a random index number
+    const RSP_array = ["rock","paper","scissors"]; 
+    const randomIndex = Math.floor(Math.random()*RSP_array.length);
     const CompChoice = RSP_array[randomIndex]; // will pick random item in array either R/S/P
     return CompChoice;
 
@@ -74,36 +77,24 @@ function playRound(playerSelection , computerSelection = getComputerChoice()){
 
 
 
-function game(){// this is a function without arrays.
-  
-  let message; //returned value of function stating who won/lost 
-  let playerTracker = 0;
-  let computerTracker=0;
-  for(let i = 0; i < 6; i++){
-    let round = playRound();
-
-    if(round == "Computer Wins"){
-      computerTracker++;
-
-    }else if(round == "Player Wins"){
-      playerTracker++;
-      
-    }
-  } 
-
-    let StringPlayerTracker = playerTracker.toString();
-    let StringComputerTracker = computerTracker.toString();
-    if(playerTracker > computerTracker){
-      message = "you won the score was " + StringPlayerTracker + ":" + StringComputerTracker;
-    }else if(playerTracker< computerTracker){
-      message = "you lost the score was " + StringPlayerTracker + ":" + StringComputerTracker;
-    }else{
-      message = "draw" + StringPlayerTracker + ":" + StringComputerTracker;
-    }
-    return message;
-
+function game(localComputerTracker, localPlayerTracker){ // this function will declare a winner when either the computer or the player reaches 5 points.
+  if(localPlayerTracker == 5){
+    resultClass.textContent = 'You won!!'
+    pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
+    computerTracker = 0;
+    playerTracker = 0;
+    resultClass.appendChild(pResult); 
+    return true;
+  }else if(localComputerTracker == 5){
+    resultClass.textContent = 'Oh no, you lost'
+    pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
+    computerTracker = 0;
+    playerTracker = 0;
+    resultClass.appendChild(pResult); 
+    return true;
+  }
 }
-//console.log(game());
+
 
 
 
