@@ -12,10 +12,13 @@ body{
     */
 }
 
+
+
 .resultClass{
     font-size: 30px;
     font-weight: bolder;
     font-family: 'Becker';
+    height: ;
 
 }
 .header{
@@ -38,8 +41,21 @@ body{
     outline: 2px solid;
     outline-color: rgb(222, 222, 58);
     outline-offset: 1rem;
-    transition: all 0.5 linear;
+    transition: all 1 linear;
     
+}
+#restart{
+    font-size: 30px;
+    font-family: 'ArcadeClassic', sans-serif;
+    background-color: rgb(222, 222, 58);
+    outline: 2px solid;
+    outline-offset: 0.2em;
+    outline-color: transparent;  
+    border-radius: 20px;
+
+}
+#restart:hover{
+    outline-color: blueviolet;
 }
 
 .btn:hover {
@@ -54,9 +70,10 @@ body{
 }
 .container{
     text-align: center;
-    margin-top: 14%;
+    margin-top: 10%;
     border-radius: 25px;
-    justify-content: ;
+  
+  
 
 }
  .content{

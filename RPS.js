@@ -1,14 +1,18 @@
-const Rbtn = document.querySelector('#R');
-const Pbtn = document.querySelector('#P');
-const Sbtn = document.querySelector('#S');
-let pResult = document.createElement('p');
+const RockButton = document.querySelector('#R');
+const PaperButton = document.querySelector('#P');
+const ScissorsButton = document.querySelector('#S');
+const NewGame= document.querySelector('#restart');
+let pResult = document.createElement('p'); // text displaying score
 let cResult=document.createElement('p');
 let playerTracker = 0;
 let computerTracker=0;
-let drawTracker = 0;
 let resultClass = document.querySelector('.resultClass');
 
-Rbtn.addEventListener ('click',function(e){
+
+
+
+
+RockButton.addEventListener ('click',function(e){
 
 let result = playRound("rock");
 ScoreDisplay(result);
@@ -17,18 +21,29 @@ game(computerTracker,playerTracker);
 });
 
 
-Pbtn.addEventListener('click',function(e){
+PaperButton.addEventListener('click',function(e){
+
+
 let result = playRound("paper");
 ScoreDisplay(result);
 game(computerTracker,playerTracker);
+
 });
 
-Sbtn.addEventListener('click', function(e){
+ScissorsButton.addEventListener('click', function(e){
+
 let result = playRound("scissors");
 ScoreDisplay(result);
 game(computerTracker,playerTracker);
+  
 });
 
+
+NewGame.addEventListener('click',function(e){
+  resultClass.textContent = "";
+  computerTracker = 0;
+  playerTracker =0;
+  });
 
 function getComputerChoice(){  
     const RSP_array = ["rock","paper","scissors"]; 
@@ -39,7 +54,7 @@ function getComputerChoice(){
 }
 
 function ScoreDisplay(result){ // This function will handle the output that the users see
-  
+  console.log(result);
   if (result == 'draw') {
     resultClass.textContent = "DRAW"; 
   }else  if (result =='Pwin' ){
@@ -55,25 +70,25 @@ function ScoreDisplay(result){ // This function will handle the output that the 
 
 
 function playRound(playerSelection , computerSelection = getComputerChoice()){
-    console.log(playerSelection);
-    let localPlayerSelection = playerSelection.toLowerCase(); // this is to make game case-insensitive
-    
-    if(localPlayerSelection == computerSelection){ 
-      drawTracker++;
-      return "draw";
+    if(playerTracker < 5 && computerTracker <5){
+      let localPlayerSelection = playerSelection.toLowerCase(); // this is to make game case-insensitive
+      
+      if(localPlayerSelection == computerSelection){ 
+        
+        return "draw";
 
-      }else if(
-        (localPlayerSelection === "rock" && computerSelection === "scissors") || // All Cases where Player beats computer
-        (localPlayerSelection === "scissors" && computerSelection === "paper") ||
-        (localPlayerSelection === "paper" && computerSelection === "rock")
-      ){
-        playerTracker++;
-        return "Pwin";
-    }else { // in any other case computer will win except if unknown string is entered. 
-      computerTracker++;  
-      return "Cwin";
+        }else if(
+          (localPlayerSelection === "rock" && computerSelection === "scissors") || // All Cases where Player beats computer
+          (localPlayerSelection === "scissors" && computerSelection === "paper") ||
+          (localPlayerSelection === "paper" && computerSelection === "rock")
+        ){
+          playerTracker++;
+          return "Pwin";
+      }else { // in any other case computer will win except if unknown string is entered. 
+        computerTracker++;  
+        return "Cwin";
+      }
     }
-    
     
 }
 
@@ -83,15 +98,13 @@ function game(localComputerTracker, localPlayerTracker){ // this function will d
   if(localPlayerTracker == 5){
     resultClass.textContent = 'WINNER!! YOU BEAT THE MACHINE!'
     pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
-    computerTracker = 0;
-    playerTracker = 0;
+    
     resultClass.appendChild(pResult); 
     return true;
   }else if(localComputerTracker == 5){
     resultClass.textContent = 'GAME OVER, YOU LOSE'
     pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
-    computerTracker = 0;
-    playerTracker = 0;
+   
     resultClass.appendChild(pResult); 
     return true;
   }
