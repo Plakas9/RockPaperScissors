@@ -2,26 +2,51 @@ body{
     background-color: black;
     color: rgb(222, 222, 58);
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'ArcadeClassic';
+    
+    
   /*  background-image: url(./images/rock-paper-scissors-neon-icons.jpg);
     */
 }
 
-
-.header{
-    font-size: 50px;
-    font-family:  cursive;
+.resultClass{
+    font-size: 30px;
     font-weight: bolder;
+    font-family: 'Becker';
+
+}
+.header{
+    word-spacing:  100px;
+    font-size: 75px;         
+    font-family:   'ArcadeClassic', sans-serif;
+    font-weight: bolder;
+    
     
 }
 
 .btn{
     background-color: black;
+    border-color: greenyellow;
     border-radius: 20px;
     width: 100px;
     height: 100px;
     font-size: 50px;
     color: rgb(222, 222, 58);
+    outline: 2px solid;
+    outline-color: transparent;
+    outline-offset: 1rem;
+    transition: all 0.5 linear;
     
+}
+
+.btn:hover {
+    border-color: purple;
+    outline-offset: 0;
+    outline-color: 
+
 }
 .rockText{
     font-size: small;
@@ -37,4 +62,10 @@ body{
     margin-bottom: 5%;
     display: flex;
     justify-content: space-around;
+}
+.footer{
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 0%;;
+    
 }

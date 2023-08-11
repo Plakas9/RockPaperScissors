@@ -40,11 +40,11 @@ function getComputerChoice(){
 function ScoreDisplay(result){ // This function will handle the output that the users see
   
   if (result == 'draw') {
-    resultClass.textContent = "DRAW, You Both played rock!"; 
+    resultClass.textContent = "DRAW"; 
   }else  if (result =='Pwin' ){
-    resultClass.textContent = 'This Round was yours';
+    resultClass.textContent = 'YOU WON THIS ROUND!';
   }else{
-    resultClass.textContent = "Computer won this round, but it's not over yet";
+    resultClass.textContent = "ROUND LOST!";
   }
   pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
   resultClass.appendChild(pResult); 
@@ -79,14 +79,14 @@ function playRound(playerSelection , computerSelection = getComputerChoice()){
 
 function game(localComputerTracker, localPlayerTracker){ // this function will declare a winner when either the computer or the player reaches 5 points.
   if(localPlayerTracker == 5){
-    resultClass.textContent = 'You won!!'
+    resultClass.textContent = 'WINNER!! YOU BEAT THE MACHINE!'
     pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
     computerTracker = 0;
     playerTracker = 0;
     resultClass.appendChild(pResult); 
     return true;
   }else if(localComputerTracker == 5){
-    resultClass.textContent = 'Oh no, you lost'
+    resultClass.textContent = 'GAME OVER, YOU LOSE'
     pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
     computerTracker = 0;
     playerTracker = 0;
