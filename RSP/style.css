@@ -1,18 +1,40 @@
 body{
     background-color: black;
-    color: aliceblue;
+    color: rgb(222, 222, 58);
     text-align: center;
+  /*  background-image: url(./images/rock-paper-scissors-neon-icons.jpg);
+    */
+}
+
+
+.header{
+    font-size: 50px;
+    font-family:  cursive;
+    font-weight: bolder;
     
 }
-h1{
-    font-size:xx-large;
-    font-family: fantasy;
-    font-style: italic;
-    color: chartreuse;
+
+.btn{
+    background-color: black;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+    color: rgb(222, 222, 58);
+    
 }
-.content{
-    justify-content: space-around;
+.rockText{
+    font-size: small;
+}
+.container{
+    text-align: center;
+    margin-top: 14%;
+    border-radius: 25px;
+    justify-content: ;
+
+}
+ .content{
+    margin-bottom: 5%;
     display: flex;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    justify-content: space-around;
 }
