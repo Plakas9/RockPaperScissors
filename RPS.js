@@ -2,6 +2,7 @@ const Rbtn = document.querySelector('#R');
 const Pbtn = document.querySelector('#P');
 const Sbtn = document.querySelector('#S');
 let pResult = document.createElement('p');
+let cResult=document.createElement('p');
 let playerTracker = 0;
 let computerTracker=0;
 let drawTracker = 0;
@@ -46,9 +47,10 @@ function ScoreDisplay(result){ // This function will handle the output that the 
   }else{
     resultClass.textContent = "ROUND LOST!";
   }
-  pResult.textContent = 'The score is : ' + playerTracker + ' - '  + computerTracker;
+  pResult.textContent = 'Your score: ' + playerTracker ;
+  cResult.textContent = 'Machine score: ' + computerTracker
   resultClass.appendChild(pResult); 
-  
+  resultClass.appendChild(cResult);
 }
 
 
